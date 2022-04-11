@@ -33,6 +33,9 @@ public class Request {
         try {
             this.seqNum = Integer.parseInt(requestStrings[0].substring(1));
             this.guestNum = Integer.parseInt(requestStrings[1]);
+            if(seqNum < 0 || guestNum < 0){
+                throw new IllegalArgumentException("Illegal input:" + requestString);
+            }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Illegal input:" + requestString);
         }
