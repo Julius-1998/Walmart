@@ -2,9 +2,14 @@ package walmart;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.io.File;
-class AppTest {
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+class AppTest {
+    int testFileNum = 5;
    @Test
    public void testCoordinate(){
        Coordinate coordinate1 = new Coordinate(0,0);
@@ -28,13 +33,27 @@ class AppTest {
    }
 
     @Test
-    public void endToEndTest(){
-       for(int i = 0;i < 5;i++) {
+    public void endToEndTest() throws IOException {
+       for(int i = 0;i < testFileNum;i++) {
            String testFilePath = "src/test/resources/inputTest" + i + ".txt";
            File file = new File(testFilePath);
            String path = file.getAbsolutePath();
            App app = new App();
            app.main(new String[]{path});
+       }
+       for(int i = 0;i < testFileNum;i++){
+           String testFileResultFilePath = "src/test/resources/inputTest" + i + "_output.txt";
+           String expectedResultFilePath = "src/test/resources/expectedOutcomes/inputTest" + i + "_output.txt";
+           File testOutputFile = new File(testFileResultFilePath);
+           File expectedOutputFile = new File(expectedResultFilePath);
+           InputStream testOutputInputStream = new FileInputStream(testOutputFile);
+           InputStream expectedInputStream = new FileInputStream(expectedOutputFile);
+           byte[] testOutputBytes = testOutputInputStream.readAllBytes();
+           byte[] expectedOutputBytes = expectedInputStream.readAllBytes();
+           assertEquals(expectedOutputBytes.length,testOutputBytes.length);
+           for(int index = 0;index < testOutputBytes.length;index++){
+               assertEquals(expectedOutputBytes[index],testOutputBytes[index]);
+           }
        }
     }
 

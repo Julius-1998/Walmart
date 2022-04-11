@@ -21,7 +21,11 @@ public class App {
         System.out.println(outputFile.getAbsolutePath());
     }
 
-
+    /**
+     * Get output file path by adding suffix of "_output" to input file path.
+     * @param inputFile input file path
+     * @return output file path
+     */
     public static String getOutputFilePath(File inputFile) {
         String inputFileName = inputFile.getName();
         String directoryName = inputFile.getParent();
@@ -30,7 +34,11 @@ public class App {
         return outputFilename;
     }
 
-
+    /**
+     * Parse request from input.
+     * @param inputFile the input file.
+     * @return a list of requests
+     */
     public static List<Request> getRequestsFromInputFile(File inputFile) {
         List<Request> requestList = null;
         try {
@@ -49,6 +57,11 @@ public class App {
         return requestList;
     }
 
+    /**
+     * Write string to file.
+     * @param outputFile the output file to be written to
+     * @param outputString the string to be written
+     */
     public static void writeResponseToFile(File outputFile, String outputString) {
         try {
             FileWriter fileWriter = new FileWriter(outputFile);
