@@ -18,20 +18,23 @@ I made some assumptions:
 
 ## Further Improvements and Possible Strategies:
     1. A better greedy algorithm:
-       Accept requests until the theatre is full. Handle requests with larger guestNum first.
-       This improvement would enable more guest from the same group to stay in one row.
-
+        Accept requests until the theatre is full. Handle requests with larger guestNum first.
+        This improvement would enable more guest from the same group to stay in one row.
+    2. Other improvements:
+        Other improvements, like make the earlier group of customers with better seats, could make this algorithm much more complex.
+        Some of them may not be solved in polynomial time.
+        
 
 
 ## How To Run Program:
-    1. In the root directory, run
+    In the root directory, run
         javac -d classes src/main/java/walmart/*.java
         cd classes
         java walmart.App <InputFileName>.txt
 
 ## How To Run Tests:
     This project uses junit for testing.
-    1. JUnit tests:
+    JUnit tests:
         In the root directory, run
         javac -d testClasses -cp "junit-platform-console-standalone-1.8.2.jar;classes" src/test/walmart/*.java
         java -jar junit-platform-console-standalone-1.8.2.jar --class-path "testClasses;classes" --scan-class-path
