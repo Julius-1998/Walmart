@@ -77,10 +77,14 @@ public class App {
         }
     }
 
+    /**
+     * Handle requests, generate seating based on requests.
+     * @param requestList the requests to be handled
+     * @return seating with filled seats
+     */
     public static Seating handleRequests(List<Request> requestList) {
         Seating seating = new Seating();
         seating.handleRequests(requestList);
-        seating.optimize();
         return seating;
     }
 }

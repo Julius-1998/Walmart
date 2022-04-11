@@ -148,8 +148,4 @@ public class Seating {
         return sb.toString();
     }
 
-    public void optimize() {
-
-    }
-
 }
